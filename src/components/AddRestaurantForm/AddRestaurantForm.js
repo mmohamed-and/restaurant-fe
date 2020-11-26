@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Button from '../atom/Button/Button';
+import InputField from '../molecule/InputField/InputField';
 import "./style.css";
 
 const AddRestaurantForm = ({ updatedState }) => {
@@ -88,28 +90,53 @@ const AddRestaurantForm = ({ updatedState }) => {
 
 	return (
 		<form className="form" onSubmit={handleForm}>
-			{updatedState ? <h3 className="form-header">Update an existing restaurant</h3> : <h3 className="form-header">Add a restaurant</h3>}
-			<div className="input-field">
-				<label htmlFor="name" className="id">Restaurant ID: </label>
-				<input type="number" id="id" name="id" onChange={handleChange} value={formState.id} placeholder="Enter ID" />
-			</div>
-			<div className="input-field">
-				<label htmlFor="name" className="name">Restaurant Name: </label>
-				<input type="text" id="name" name="name" onChange={handleChange} value={formState.name} placeholder="Enter name" />
-			</div>
-			<div className="input-field">
-				<label htmlFor="cuisine" className="cuisine">Cuisine: </label>
-				<input type="text" id="cuisine" name="cuisine" onChange={handleChange} value={formState.cuisine} placeholder="Enter cuisine" />
-			</div>
-			<div className="input-field">
-				<label htmlFor="" className="city">City: </label>
-				<input type="text" id="city" name="city" onChange={handleChange} value={formState.city} placeholder="Enter city" />
-			</div>
-			<div className="input-field">
-				<label htmlFor="" className="desc">Description: </label>
-				<textarea type="text" id="desc" name="description" onChange={handleChange} value={formState.description} placeholder="Enter description" />
-			</div>
-			<button type="submit" id="submit-btn">Submit</button>
+			<InputField
+				type="number"
+				id="id"
+				name="id"
+				labelText="Restaurant ID:"
+				onChange={handleChange}
+				value={formState.id}
+				placeHolder="Enter ID"
+			/>
+			<InputField
+				type="text"
+				id="name"
+				name="name"
+				labelText="Restaurant Name:"
+				onChange={handleChange}
+				value={formState.name}
+				placeHolder="Enter name"
+			/>
+			<InputField
+				type="text"
+				id="cuisine"
+				name="cuisine"
+				labelText="Cuisine:"
+				onChange={handleChange}
+				value={formState.cuisine}
+				placeHolder="Enter cuisine"
+			/>
+			<InputField
+				type="text"
+				id="city"
+				name="city"
+				labelText="City:"
+				onChange={handleChange}
+				value={formState.city}
+				placeHolder="Enter city"
+			/>
+			<InputField
+				type="text"
+				isTextArea={true}
+				id="description"
+				name="description"
+				labelText="Description:"
+				onChange={handleChange}
+				value={formState.description}
+				placeHolder="Enter description"
+			/>
+			<Button buttonLabel="Submit" className="submit-btn" id="submit-btn" />
 			{status && <p>{status}</p>}
 		</form>
 	);
