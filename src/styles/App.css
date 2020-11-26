@@ -1,0 +1,45 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.App {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  
+}
+
+.forms {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0 10px;
+}
+
+.form-inner {
+	max-width: 550px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-buttons {
+	background-color: #e2e6ed;
+	align-self: flex-start;
+}
+
+.add-header-btn {
+	border-right: 1px solid rgb(147, 147, 147);
+}
+
+.button-on {
+	background-color: rgb(73 163 218);
+	color: white;
+}
+
+@media only screen and (min-width: 580px){
+	.forms {
+		justify-content: center;
+		align-items: center;
+	}
+}
