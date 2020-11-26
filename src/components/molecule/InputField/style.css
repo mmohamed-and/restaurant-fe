@@ -1,0 +1,21 @@
+nput-field {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.input-field > input {
+	height: 30px;
+}
+
+.input-field > input, .input-field > textarea {
+	flex-basis: 70%;
+	max-width: 300px;
+}
+
+.input-field > label {
+	flex-basis: 25%;
+	max-width: 150px;
+	text-align: left;
+}
