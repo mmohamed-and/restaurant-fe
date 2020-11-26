@@ -7,13 +7,17 @@ import Footer from '../components/atom/Footer/Footer';
 import '../styles/App.css';
 
 function App() {
-	const [update, setUpdate] = useState(false);
+	const [update, setUpdate] = useState("add");
 	const handleAdd = (e) => {
-		setUpdate(false)
+		setUpdate("add")
 	}
 
 	const handleUpdate = (e) => {
-		setUpdate(true);
+		setUpdate("update");
+	}
+
+	const handleDelete = (e) => {
+		setUpdate("delete");
 	}
 
 
@@ -26,16 +30,23 @@ function App() {
 						<Button
 							type="button"
 							id="add"
-							className={update === false ? "add-header-btn button-on" : "add-header-btn"}
+							className={update === 'add' ? "header-btn button-on" : "header-btn"}
 							onClick={handleAdd}
 							buttonLabel="Add"
 						/>
 						<Button
 							type="button"
 							id="update"
-							className={!update === false ? "update-header-btn button-on" : "update-header-btn"}
+							className={update === 'update' ? "header-btn button-on" : "header-btn"}
 							onClick={handleUpdate}
 							buttonLabel="Update"
+						/>
+						<Button
+							type="button"
+							id="delete"
+							className={update === 'delete' ? "header-btn button-on" : "header-btn"}
+							onClick={handleDelete}
+							buttonLabel="Delete"
 						/>
 					</div>
 					<AddRestaurantForm updatedState={update} />
