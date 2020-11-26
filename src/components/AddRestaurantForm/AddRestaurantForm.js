@@ -49,9 +49,21 @@ const AddRestaurantForm = ({ updatedState }) => {
 			},
 		};
 
+		const requestDeleteOptions = {
+			method: 'Delete',
+			mode: "cors",
+			cache: "no-cache",
+			body: JSON.stringify(formState.id),
+			credentials: "same-origin",
+			headers: {
+				'Content-Type': 'application/json',
+				"Access-Control-Allow-Origin": "Authorization",
+			},
+		};
 
-		if(updatedState){
-			fetch('/api/restaurant/' + formState.id, requestUpdateOptions)
+
+		if (updatedState === "add") {
+			fetch('/api/restaurant/', requestPostOptions)
 				.then((response) => {
 					console.log(response, 'response');
 					setStatus(response.statusText);
@@ -64,19 +76,32 @@ const AddRestaurantForm = ({ updatedState }) => {
 					console.log(err, 'error');
 				})
 
+		} else if (updatedState === "update") {
+			fetch('/api/restaurant/' + formState.id, requestUpdateOptions)
+				.then((response) => {
+					console.log(response, 'response');
+					setStatus(response.statusText);
+					return response.json();
+				})
+				.then((data) => {
+					console.log(data, 'data sent');
+				})
+				.catch((err) => {
+					console.log(err, 'error');
+				})
 		} else {
-			fetch('/api/restaurant', requestPostOptions)
-			.then((response) => {
-				console.log(response, 'response');
-				setStatus(response.statusText);
-				return response.json();
-			})
-			.then((data) => {
-				console.log(data, 'data sent');
-			})
-			.catch((err) => {
-				console.log(err, 'error');
-			})
+			fetch('/api/restaurant/' + formState.id, requestDeleteOptions)
+				.then((response) => {
+					console.log(response, 'response');
+					setStatus(response.statusText);
+					return response.json();
+				})
+				.then((data) => {
+					console.log(data, 'data sent');
+				})
+				.catch((err) => {
+					console.log(err, 'error');
+				})
 		}
 
 		setFormState({
@@ -90,6 +115,15 @@ const AddRestaurantForm = ({ updatedState }) => {
 
 	return (
 		<form className="form" onSubmit={handleForm}>
+			{updatedState === 'add' 
+			?
+			<h3 className="form-header">Add a restaurant</h3> 
+			 : updatedState === 'update' 
+			 ? 	<h3 className="form-header">Update an existing restaurant</h3> 
+			 : updatedState === 'delete' 
+			 ?<h3 className="form-header">Delete an existing restaurant</h3>
+			 : null
+			 }
 			<InputField
 				type="number"
 				id="id"
