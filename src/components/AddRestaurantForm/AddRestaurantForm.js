@@ -115,61 +115,80 @@ const AddRestaurantForm = ({ updatedState }) => {
 
 	return (
 		<form className="form" onSubmit={handleForm}>
-			{updatedState === 'add' 
-			?
-			<h3 className="form-header">Add a restaurant</h3> 
-			 : updatedState === 'update' 
-			 ? 	<h3 className="form-header">Update an existing restaurant</h3> 
-			 : updatedState === 'delete' 
-			 ?<h3 className="form-header">Delete an existing restaurant</h3>
-			 : null
-			 }
-			<InputField
-				type="number"
-				id="id"
-				name="id"
-				labelText="Restaurant ID:"
-				onChange={handleChange}
-				value={formState.id}
-				placeHolder="Enter ID"
-			/>
-			<InputField
-				type="text"
-				id="name"
-				name="name"
-				labelText="Restaurant Name:"
-				onChange={handleChange}
-				value={formState.name}
-				placeHolder="Enter name"
-			/>
-			<InputField
-				type="text"
-				id="cuisine"
-				name="cuisine"
-				labelText="Cuisine:"
-				onChange={handleChange}
-				value={formState.cuisine}
-				placeHolder="Enter cuisine"
-			/>
-			<InputField
-				type="text"
-				id="city"
-				name="city"
-				labelText="City:"
-				onChange={handleChange}
-				value={formState.city}
-				placeHolder="Enter city"
-			/>
-			<InputField
-				type="text"
-				isTextArea={true}
-				id="description"
-				name="description"
-				labelText="Description:"
-				onChange={handleChange}
-				value={formState.description}
-				placeHolder="Enter description"
-			/>
+			{updatedState === 'add'
+				?
+				<h3 className="form-header">Add a restaurant</h3>
+				: updatedState === 'update'
+					? <h3 className="form-header">Update an existing restaurant</h3>
+					: updatedState === 'delete'
+						? <h3 className="form-header">Delete an existing restaurant</h3>
+						: null
+			}
+			{updatedState !== "delete" 
+			? (
+				<>
+					<InputField
+						type="number"
+						id="id"
+						name="id"
+						labelText="Restaurant ID:"
+						onChange={handleChange}
+						value={formState.id}
+						placeHolder="Enter ID"
+					/>
+
+					<InputField
+						type="text"
+						id="name"
+						name="name"
+						labelText="Restaurant Name:"
+						onChange={handleChange}
+						value={formState.name}
+						placeHolder="Enter name"
+					/>
+					<InputField
+						type="text"
+						id="cuisine"
+						name="cuisine"
+						labelText="Cuisine:"
+						onChange={handleChange}
+						value={formState.cuisine}
+						placeHolder="Enter cuisine"
+					/>
+					<InputField
+						type="text"
+						id="city"
+						name="city"
+						labelText="City:"
+						onChange={handleChange}
+						value={formState.city}
+						placeHolder="Enter city"
+					/>
+					<InputField
+						type="text"
+						isTextArea={true}
+						id="description"
+						name="description"
+						labelText="Description:"
+						onChange={handleChange}
+						value={formState.description}
+						placeHolder="Enter description"
+					/>
+				</>
+			)
+				: (
+					<InputField
+						type="text"
+						id="name"
+						name="name"
+						labelText="Restaurant Name:"
+						onChange={handleChange}
+						value={formState.name}
+						placeHolder="Enter name"
+					/>
+				)
+			}
+
 			<Button buttonLabel="Submit" className="submit-btn" id="submit-btn" />
 			{status && <p>{status}</p>}
 		</form>
