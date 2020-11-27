@@ -40,6 +40,9 @@ const TileBlock = () => {
 								<h3 className="tile-header">
 									{restaurant.name}
 								</h3>
+								<h6 className="tile-id">
+									ID: {restaurant.id}
+								</h6>
 								<h6 className="tile-cuisine">
 									{restaurant.cuisine}
 								</h6>
