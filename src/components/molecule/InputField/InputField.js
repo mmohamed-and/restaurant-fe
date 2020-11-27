@@ -11,7 +11,7 @@ const Input = ({ type, id, name, labelText, onChange, value, placeHolder, isText
 				?
 				<input type={type} id={id} name={name} onChange={onChange} value={value} placeholder={placeHolder} />
 				:
-				<textarea type={type}  id={id} name={name} onChange={onChange} rows="4" value={value} placeholder={placeHolder}
+				<textarea type={type} id={id} name={name} onChange={onChange} rows="4" value={value} placeholder={placeHolder}
 				/>
 			}
 		</div>
@@ -24,7 +24,10 @@ Input.propTypes = {
 	id: PropTypes.string,
 	name: PropTypes.string,
 	onChange: PropTypes.func,
-	value: PropTypes.string,
+	value: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number
+	]),
 	placeholder: PropTypes.string,
 	isTextArea: PropTypes.bool
 };
