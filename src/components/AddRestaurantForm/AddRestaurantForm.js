@@ -90,7 +90,7 @@ const AddRestaurantForm = ({ updatedState }) => {
 					console.log(err, 'error');
 				})
 		} else {
-			fetch('/api/restaurant/' + formState.id, requestDeleteOptions)
+			fetch('/api/restaurant/' + formState.name, requestDeleteOptions)
 				.then((response) => {
 					console.log(response, 'response');
 					setStatus(response.statusText);
