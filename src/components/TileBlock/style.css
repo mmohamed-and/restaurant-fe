@@ -37,7 +37,7 @@ html {
 	margin-top: 5px;
 }
 
-.tile-cuisine, .tile-city {
+.tile-cuisine, .tile-city, .tile-id {
 	font-size: 0.9rem;
 	margin: 5px 0;
 }
