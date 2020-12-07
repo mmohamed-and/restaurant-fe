@@ -12,6 +12,8 @@ const AddRestaurantForm = ({ updatedState }) => {
 		description: ''
 	});
 	const [status, setStatus] = useState("");
+	const baseUrl = process.env.REACT_APP_BASE_URL;
+	console.log(baseUrl);
 
 	const handleChange = (event) => {
 		const { name, value, type } = event.target;
@@ -61,9 +63,10 @@ const AddRestaurantForm = ({ updatedState }) => {
 			},
 		};
 
+		/*  TO DO: Putt the base url in an env file  */ 
 
 		if (updatedState === "add") {
-			fetch('/api/restaurant/', requestPostOptions)
+			fetch(`${baseUrl}/api/restaurant`, requestPostOptions)
 				.then((response) => {
 					console.log(response, 'response');
 					setStatus(response.statusText);
@@ -77,7 +80,7 @@ const AddRestaurantForm = ({ updatedState }) => {
 				})
 
 		} else if (updatedState === "update") {
-			fetch('/api/restaurant/' + formState.id, requestUpdateOptions)
+			fetch(`${baseUrl}/api/restaurant/${formState.id}`, requestUpdateOptions)
 				.then((response) => {
 					console.log(response, 'response');
 					setStatus(response.statusText);
@@ -90,7 +93,7 @@ const AddRestaurantForm = ({ updatedState }) => {
 					console.log(err, 'error');
 				})
 		} else {
-			fetch('/api/restaurant/' + formState.name, requestDeleteOptions)
+			fetch(`${baseUrl}/api/restaurant/${formState.name}`, requestDeleteOptions)
 				.then((response) => {
 					console.log(response, 'response');
 					setStatus(response.statusText);

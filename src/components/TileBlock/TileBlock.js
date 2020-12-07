@@ -3,14 +3,15 @@ import "./style.css";
 
 const TileBlock = () => {
 	const [data, setData] = useState([]);
-	const url = "/api/restaurant";
+	const url = process.env.REACT_APP_BASE_URL;
+
 	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			setIsLoading(true);
 
-			const result = await fetch(url, {
+			const result = await fetch(`${url}/api/restaurant`, {
 				method: "GET",
 				mode: "cors",
 				cache: "no-cache",
